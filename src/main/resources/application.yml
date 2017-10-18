@@ -1,0 +1,11 @@
+security:
+    oauth2:
+        client:
+            clientId: 8d3a8e66521fc9c60716
+            clientSecret: 833d1e1b0ef65c0257199697f8b8c186ae1e8497
+            accessTokenUri: https://github.com/login/oauth/access_token
+            userAuthorizationUri: https://github.com/login/oauth/authorize
+            clientAuthenticationScheme: form
+        resource:
+            userInfoUri: https://api.github.com/user
+            preferTokenInfo: false

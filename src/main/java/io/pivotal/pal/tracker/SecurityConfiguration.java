@@ -1,12 +1,16 @@
 package io.pivotal.pal.tracker;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
+@EnableOAuth2Sso
 @EnableWebSecurity
+@EnableResourceServer
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -16,9 +20,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         }
 
         http
-                .authorizeRequests().antMatchers("/**").hasRole("USER")
-                .and()
-                .httpBasic()
+                .authorizeRequests().antMatchers("/**").authenticated()
+//                .and()
+//                .httpBasic()
                 .and()
                 .csrf().disable();
     }
