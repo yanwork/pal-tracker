@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.TimeZone;
 
 import static com.jayway.jsonpath.JsonPath.parse;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,6 +33,10 @@ public class TimeEntryApiTest {
     private TestRestTemplate restTemplate;
 
     private TimeEntry timeEntry = new TimeEntry(123, 456, LocalDate.parse("2017-01-08"), 8);
+
+    {
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
 
     @Before
     public void setUp() throws Exception {

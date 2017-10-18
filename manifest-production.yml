@@ -3,4 +3,5 @@ applications:
 - name: pal-tracker
   path: build/libs/pal-tracker.jar
   host: yan-pal-tracker
-
+  services:
+    - tracker-database
